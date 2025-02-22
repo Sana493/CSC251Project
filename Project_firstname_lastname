@@ -1,0 +1,182 @@
+import java.util.Scanner;
+
+public class Project_firstname_lastname {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Collect user input
+        System.out.println("Please enter the Policy Number:");
+        int policyNumber = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        System.out.println("Please enter the Provider Name:");
+        String providerName = scanner.nextLine();
+
+        System.out.println("Please enter the Policyholder's First Name:");
+        String firstName = scanner.nextLine();
+
+        System.out.println("Please enter the Policyholder's Last Name:");
+        String lastName = scanner.nextLine();
+
+        System.out.println("Please enter the Policyholder's Age:");
+        int age = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        System.out.println("Please enter the Policyholder's Smoking Status (smoker/non-smoker):");
+        String smokingStatus = scanner.nextLine();
+
+public class Policy {
+    // Fields
+    private int policyNumber;CSC151Project
+    private String providerName;
+    private String policyholderFirstName;
+    private String policyholderLastName;
+    private int policyholderAge;
+    private String smokingStatus;
+    private double policyholderHeight;
+    private double policyholderWeight;
+
+    // No-arg constructor (default values)
+    public Policy() {
+        policyNumber = 0;
+        providerName = "";
+        policyholderFirstName = "";
+        policyholderLastName = "";
+        policyholderAge = 0;
+        smokingStatus = "non-smoker";
+        policyholderHeight = 0;
+        policyholderWeight = 0;
+    }
+
+    // Constructor that accepts arguments
+    public Policy(int policyNumber, String providerName, String policyholderFirstName, String policyholderLastName,
+                  int policyholderAge, String smokingStatus, double policyholderHeight, double policyholderWeight) {
+        this.policyNumber = policyNumber;
+        this.providerName = providerName;
+        this.policyholderFirstName = policyholderFirstName;
+        this.policyholderLastName = policyholderLastName;
+        this.policyholderAge = policyholderAge;
+        this.smokingStatus = smokingStatus;
+        this.policyholderHeight = policyholderHeight;
+        this.policyholderWeight = policyholderWeight;
+    }
+
+    // Setters and Getters
+    public int getPolicyNumber() {
+        return policyNumber;
+    }
+
+    public void setPolicyNumber(int policyNumber) {
+        this.policyNumber = policyNumber;
+    }
+
+    public String getProviderName() {
+        return providerName;
+    }
+
+    public void setProviderName(String providerName) {
+        this.providerName = providerName;
+    }
+
+    public String getPolicyholderFirstName() {
+        return policyholderFirstName;
+    }
+
+    public void setPolicyholderFirstName(String policyholderFirstName) {
+        this.policyholderFirstName = policyholderFirstName;
+    }
+
+    public String getPolicyholderLastName() {
+        return policyholderLastName;
+    }
+
+    public void setPolicyholderLastName(String policyholderLastName) {
+        this.policyholderLastName = policyholderLastName;
+    }
+
+    public int getPolicyholderAge() {
+        return policyholderAge;
+    }
+
+    public void setPolicyholderAge(int policyholderAge) {
+        this.policyholderAge = policyholderAge;
+    }
+
+    public String getSmokingStatus() {
+        return smokingStatus;
+    }
+
+    public void setSmokingStatus(String smokingStatus) {
+        this.smokingStatus = smokingStatus;
+    }
+
+    public double getPolicyholderHeight() {
+        return policyholderHeight;
+    }
+
+    public void setPolicyholderHeight(double policyholderHeight) {
+        this.policyholderHeight = policyholderHeight;
+    }
+
+    public double getPolicyholderWeight() {
+        return policyholderWeight;
+    }
+
+    public void setPolicyholderWeight(double policyholderWeight) {
+        this.policyholderWeight = policyholderWeight;
+    }
+
+    // Method to calculate BMI
+    public double calculateBMI() {
+        return (policyholderWeight * 703) / (policyholderHeight * policyholderHeight);
+    }
+
+    // Method to calculate policy price
+    public double calculatePolicyPrice() {
+        double baseFee = 600;
+        double additionalFee = 0;
+
+        if (policyholderAge > 50) {
+            additionalFee += 75;
+        }
+        if (smokingStatus.equalsIgnoreCase("smoker")) {
+            additionalFee += 100;
+        }
+        double bmi = calculateBMI();
+        if (bmi > 35) {
+            additionalFee += (bmi - 35) * 20;
+        }
+
+        return baseFee + additionalFee;
+    }
+
+    // toString method to display policy information
+    @Override
+    public String toString() {
+        return "Policy Number: " + policyNumber + "\n" +
+               "Provider Name: " + providerName + "\n" +
+               "Policyholder's First Name: " + policyholderFirstName + "\n" +
+               "Policyholder's Last Name: " + policyholderLastName + "\n" +
+               "Policyholder's Age: " + policyholderAge + "\n" +
+               "Policyholder's Smoking Status: " + smokingStatus + "\n" +
+               "Policyholder's Height: " + policyholderHeight + " inches\n" +
+               "Policyholder's Weight: " + policyholderWeight + " pounds\n" +
+               "Policyholder's BMI: " + String.format("%.2f", calculateBMI()) + "\n" +
+               "Policy Price: $" + String.format("%.2f", calculatePolicyPrice());
+    }
+}        System.out.println("Please enter the Policyholder's Height (in inches):");
+        double height = scanner.nextDouble();
+
+        System.out.println("Please enter the Policyholder's Weight (in pounds):");
+        double weight = scanner.nextDouble();
+
+        // Create Policy object
+        Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
+
+        // Display policy information
+        System.out.println("\nPolicy Information:");
+        System.out.println(policy);
+
+        scanner.close();
+    }
+}
